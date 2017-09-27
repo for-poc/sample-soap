@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:ifxforum-org:XSD:1" xmlns:ifx="urn:ifxforum-org:XSD:1"
+	xmlns:com.fnf="http://www.openshift.com/ifxcust" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:ifxforum-org:XSD:1" elementFormDefault="qualified">
+	<xsd:include schemaLocation="Common.xsd" />
+
+
+	<xsd:complexType name="CustInqRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="RqUID" />
+			<xsd:element ref="MsgRqHdr" minOccurs="0" />
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="CustRef" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustInqRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="Status" minOccurs="0" />
+				<xsd:element ref="RqUID" />
+				<xsd:element ref="MsgRsHdr" minOccurs="0" />
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="CustRec" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+		<xsd:complexType name="CustAddRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="RqUID"/>
+			<xsd:element ref="MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="CustInfo"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+<xsd:complexType name="CustAddRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="Status" minOccurs="0"/>
+				<xsd:element ref="RqUID"/>
+				<xsd:element ref="MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+					<xsd:element ref="CustRec"/>				
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustDelRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="RqUID"/>
+			<xsd:element ref="MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="CustRef"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+		<xsd:complexType name="CustDelRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="Status" minOccurs="0"/>
+				<xsd:element ref="RqUID"/>
+				<xsd:element ref="MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">			
+					<xsd:element ref="CustRec"/>			
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CustPermId_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustLoginId_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="CustId_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" />
+			<xsd:sequence>
+				<xsd:element ref="CustPermId" minOccurs="0" />
+				<xsd:element ref="CustLoginId" minOccurs="0" />
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="CustId" />
+			<xsd:element ref="CustInfo" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustRef_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="CustId" />
+				<xsd:element ref="CustRec" />
+				<xsd:element ref="CustInfo" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustContact_Type">
+		<xsd:sequence>
+			<xsd:element ref="CustContactPref" minOccurs="0" />
+			<xsd:element ref="DayPhone" minOccurs="0" />
+			<xsd:element ref="EvePhone" minOccurs="0" />
+			<xsd:element ref="ifx:EmailAddr" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PersonInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:PersonName" />
+			<xsd:element ref="ContactInfo" minOccurs="0" />
+			<xsd:element ref="TINInfo" minOccurs="0" />
+			<xsd:element ref="ifx:BirthDt" minOccurs="0" />
+			<xsd:element ref="DriversLicense" minOccurs="0" />
+			<xsd:element ref="ifx:Gender" minOccurs="0" />
+			<xsd:element ref="MaritalStatus" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="ContactInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="ContactPref" minOccurs="0" />
+			<xsd:element ref="ifx:Phone" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="ifx:EmailAddr" minOccurs="0" />
+			<xsd:element ref="ifx:PostAddr" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustInfo_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="CustName" />
+				<xsd:sequence minOccurs="0">
+					<xsd:element ref="ifx:PostAddr" minOccurs="0" />
+					<xsd:element ref="CustContact" minOccurs="0" />
+					<xsd:element ref="ContactInfo" minOccurs="0" />
+				</xsd:sequence>
+				<xsd:element ref="PersonInfo" />
+
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="TaxId_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="TINInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="TINType" minOccurs="0" />
+			<xsd:element ref="TaxId" />
+			<xsd:element ref="CertCode" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DriversLicense_Type">
+		<xsd:sequence>
+			<xsd:element ref="LicenseNum" />
+			<xsd:element ref="ifx:StateProv" minOccurs="0" />
+			<xsd:element ref="ifx:CountryCode" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="LicenseNum_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="ContactInfo" type="ContactInfo_Type" />
+	<xsd:element name="ContactPref" type="ifx:OpenEnum_Type" />
+	<xsd:element name="CustContactPref" type="ifx:OpenEnum_Type" />
+	<xsd:element name="DayPhone" type="ifx:PhoneNumber_Type" />
+	<xsd:element name="EvePhone" type="ifx:PhoneNumber_Type" />
+	<xsd:element name="PersonInfo" type="PersonInfo_Type" />
+	<xsd:element name="TINInfo" type="TINInfo_Type" />
+	<xsd:element name="TINType" type="ifx:OpenEnum_Type" />
+	<xsd:element name="TaxId" type="TaxId_Type" />
+	<xsd:element name="CertCode" type="ifx:OpenEnum_Type" />
+	<xsd:element name="DriversLicense" type="DriversLicense_Type" />
+	<xsd:element name="LicenseNum" type="LicenseNum_Type" />
+	<xsd:element name="MaritalStatus" type="ifx:OpenEnum_Type" />
+
+	<xsd:element name="CustName" type="ifx:PersonName_Type" />
+	<xsd:element name="CustId" type="CustId_Type" />
+	<xsd:element name="CustPermId" type="CustPermId_Type" />
+	<xsd:element name="CustLoginId" type="CustLoginId_Type" />
+	<xsd:element name="CustRec" type="CustRec_Type" />
+	<xsd:element name="CustRef" type="CustRef_Type" />
+	<xsd:element name="CustContact" type="CustContact_Type" />
+	<xsd:element name="CustInfo" type="CustInfo_Type" />
+
+	<!-- Request and Response parent elements -->
+	<xsd:element name="CustInqRq" type="CustInqRq_Type" />
+	<xsd:element name="CustInqRs" type="CustInqRs_Type" />
+	
+		<!-- Request and Response Add-->
+	<xsd:element name="CustAddRq" type="CustAddRq_Type" />
+	<xsd:element name="CustAddRs" type="CustAddRs_Type" />
+	
+	
+	<!-- Request and Response Delete-->
+	<xsd:element name="CustDelRq" type="CustDelRq_Type" />
+	<xsd:element name="CustDelRs" type="CustDelRs_Type" />
+
+</xsd:schema>

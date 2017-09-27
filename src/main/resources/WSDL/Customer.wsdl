@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.ifxopenshift.com/Customer/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Customer"
+	targetNamespace="http://www.ifxopenshift.com/Customer/"  xmlns:ns2 = "urn:ifxforum-org:XSD:1">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.ifxopenshift.com/Customer/">
+
+			<xsd:import namespace="urn:ifxforum-org:XSD:1"
+				schemaLocation="../XMLSchema/Customer/Customer.xsd" />
+
+		</xsd:schema>
+	</wsdl:types>
+
+
+
+	<!--  Add Customer -->
+	<wsdl:message name="AddRq">
+		<wsdl:part element="ns2:CustAddRq" name="rq" />
+	</wsdl:message>
+	<wsdl:message name="AddRs">
+		<wsdl:part element="ns2:CustAddRs" name="rs" />
+	</wsdl:message>
+	
+	<!--  Delete Customer -->	
+	<wsdl:message name="DelRq">
+		<wsdl:part element="ns2:CustDelRq" name="rq" />
+	</wsdl:message>
+	<wsdl:message name="DelRs">
+		<wsdl:part element="ns2:CustDelRs" name="rs" />
+	</wsdl:message>
+	
+	<!--  Inq Customer -->
+	<wsdl:message name="InqRq">
+		<wsdl:part element="ns2:CustInqRq" name="rq" />
+	</wsdl:message>
+	<wsdl:message name="InqRs">
+		<wsdl:part element="ns2:CustInqRs" name="rs" />
+	</wsdl:message>
+	
+	
+	<wsdl:portType name="Customer">
+		
+		<wsdl:operation name="inq">
+			<wsdl:input message="tns:InqRq" name = "InqRq"/>
+			<wsdl:output message="tns:InqRs" name = "InqRs"/>
+		</wsdl:operation>
+		
+		<wsdl:operation name="add">
+			<wsdl:input message="tns:AddRq" name = "AddRq"/>
+			<wsdl:output message="tns:AddRs" name = "AddRs"/>
+		</wsdl:operation>	
+		
+			<wsdl:operation name="del">
+			<wsdl:input message="tns:DelRq" name = "DelRq"/>
+			<wsdl:output message="tns:DelRs" name = "DelRs"/>
+		</wsdl:operation>
+		
+	</wsdl:portType>
+	
+	
+	
+	<wsdl:binding name="CustomerBinding" type="tns:Customer">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+			
+		<wsdl:operation name="inq">
+			<soap:operation soapAction="urn:IFX" />
+			<wsdl:input name="InqRq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name = "InqRs">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		
+			<wsdl:operation name="add">
+			<soap:operation soapAction="urn:IFX" />
+			<wsdl:input name="AddRq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name = "AddRs">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		
+		
+			<wsdl:operation name="del">
+			<soap:operation soapAction="urn:IFX" />
+			<wsdl:input name="DelRq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name = "DelRs">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		
+	</wsdl:binding>
+	
+	
+	
+	<wsdl:service name="Customer">
+		<wsdl:port binding="tns:CustomerBinding" name="CustomerPort">
+			<soap:address location="http://www.ifxopenshift.com/" />
+		</wsdl:port>
+	</wsdl:service>
+	
+	
+</wsdl:definitions>

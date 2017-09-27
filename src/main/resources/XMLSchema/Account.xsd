@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:ifx="http://www.ifxforum.org/IFX_2X" xmlns:com="http://www.ally.com/ifx/Common/" xmlns="http://www.ally.com/ifx/Account/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ally.com/ifx/Account/" elementFormDefault="qualified">
+	<xsd:import namespace="http://www.ifxforum.org/IFX_2X" schemaLocation="ifx/IFX_pruned.xsd"/>
+	<xsd:import namespace="http://www.ally.com/ifx/Common/" schemaLocation="common/AllyCommon.xsd"/>
+	
+	<xsd:complexType name="AccountInqRq_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AccountInqRq_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AccountInqRs_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AccountInqRs_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AccountAddRq_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AccountAddRq_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AccountAddRs_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AccountAddRs_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="AccountInqRq" type="AccountInqRq_Type"/>
+	<xsd:element name="AccountInqRs" type="AccountInqRs_Type"/>
+	<xsd:element name="AccountAddRq" type="AccountAddRq_Type"/>
+	<xsd:element name="AccountAddRs" type="AccountAddRs_Type"/>
+
+</xsd:schema>

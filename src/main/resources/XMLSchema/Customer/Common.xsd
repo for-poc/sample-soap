@@ -1,0 +1,291 @@
+<xsd:schema xmlns="urn:ifxforum-org:XSD:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:ifxforum-org:XSD:1" elementFormDefault="qualified">
+
+	<xsd:simpleType name="ClosedEnum_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="PhoneNumber_Type">
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Severity_Type">
+		<xsd:restriction base="ClosedEnum_Type">
+			<xsd:enumeration value="Error" />
+			<xsd:enumeration value="Warning" />
+			<xsd:enumeration value="Info" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="StatusDesc_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ServerStatusCode_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Long_Type">
+		<xsd:annotation>
+			<xsd:documentation>Long is an integer value, which may be positive,
+				negative, or zero, with values ranging from -2147483648 to
+				2147483647.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:long" />
+	</xsd:simpleType>
+	<xsd:simpleType name="Date_Type">
+		<xsd:restriction base="xsd:date" />
+	</xsd:simpleType>
+	<xsd:simpleType name="C">
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+	<xsd:simpleType name="EmailAddr_Type">
+		<xsd:restriction base="NC">
+			<xsd:maxLength value="128" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GivenName_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MiddleName_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>	
+	<xsd:simpleType name="FullName_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="96" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OpenEnum_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NamePrefix_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NameSuffix_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="City_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CountyDistrict_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="StateProv_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="32" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="PostalCode_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="11" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NC">
+		<xsd:annotation>
+			<xsd:documentation>Elements of type Narrow Character are elements of
+				character data type with the additional restriction that the only
+				allowable characters are those contained within the ISO Latin-1
+				character set.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+	<xsd:simpleType name="Name_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NameSpace_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="128" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Nationality_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NetworkRefIdent_Type">
+		<xsd:restriction base="NC">
+			<xsd:maxLength value="36" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Nickname_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="UUID_Type">
+		<xsd:annotation>
+			<xsd:documentation>UUID elements are Narrow Character with a maximum
+				length of 36.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="NC">
+			<xsd:maxLength value="36" />
+			<xsd:pattern
+				value="([0-9]|[a-f]|[A-F]){8}(-([0-9]|[a-f]|[A-F]){4})(-([0-9]|[a-f]|[A-F]){4})(-([0-9]|[a-f]|[A-F]){4})(-([0-9]|[a-f]|[A-F]){12})" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="URL_Type">
+		<xsd:restriction base="NC">
+			<xsd:maxLength value="1024" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Addr1_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="64" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Addr2_Type">
+		<xsd:restriction base="C">
+			<xsd:maxLength value="64" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="MsgRqHdr_Type">
+		<xsd:sequence>
+			<xsd:element ref="AsyncRqUID" minOccurs="0" />
+		</xsd:sequence>
+
+	</xsd:complexType>
+	<xsd:complexType name="Locator_Type">
+		<xsd:sequence />
+	</xsd:complexType>
+
+	<xsd:complexType name="CountryCode_Type">
+		<xsd:sequence>
+			<xsd:element ref="CountryCodeSource" minOccurs="0" />
+			<xsd:element ref="CountryCodeValue" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PostAddr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="Locator_Type">
+				<xsd:sequence>
+					<xsd:sequence minOccurs="0">
+						<xsd:element ref="Addr1" minOccurs="0" />
+						<xsd:sequence minOccurs="0">
+							<xsd:element ref="Addr2" minOccurs="0" />
+
+						</xsd:sequence>
+					</xsd:sequence>
+					<xsd:element ref="City" minOccurs="0" />
+					<xsd:element ref="CountyDistrict" minOccurs="0" />
+					<xsd:element ref="StateProv" minOccurs="0" />
+					<xsd:element ref="PostalCode" minOccurs="0" />
+					<xsd:element ref="CountryCode" minOccurs="0" />
+					<xsd:element ref="AddrType" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PersonName_Type">
+		<xsd:sequence>
+			<xsd:element ref="FullName" />
+			<xsd:element ref="GivenName" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="MiddleName" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="NamePrefix" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="NameSuffix" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Status_Type">
+		<xsd:sequence>
+			<xsd:element ref="StatusCode" />
+			<xsd:element ref="ServerStatusCode" minOccurs="0" />
+			<xsd:element ref="Severity" />
+			<xsd:element ref="StatusDesc" minOccurs="0" />
+			<xsd:element ref="AdditionalStatus" minOccurs="0"
+				maxOccurs="unbounded" />
+
+		</xsd:sequence>
+		<xsd:attribute name="Id" type="xsd:ID" />
+	</xsd:complexType>
+
+	<xsd:complexType name="AdditionalStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="StatusCode" minOccurs="0" />
+			<xsd:element ref="ServerStatusCode" minOccurs="0" />
+			<xsd:element ref="Severity" />
+			<xsd:element ref="StatusDesc" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="MsgRsHdr_Type">
+		<xsd:sequence>
+			<xsd:element ref="AsyncRqUID" minOccurs="0" />
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="SPName" type="URL_Type" />
+	<xsd:element name="RqUID" type="UUID_Type" />
+	<xsd:element name="AsyncRqUID" type="UUID_Type" />
+	<xsd:element name="MsgRqHdr" type="MsgRqHdr_Type" />
+
+	<xsd:element name="Addr1" type="Addr1_Type" />
+	<xsd:element name="Addr2" type="Addr2_Type" />
+	<xsd:element name="AddrType" type="OpenEnum_Type" />
+	<xsd:element name="City" type="City_Type" />
+	<xsd:element name="StateProv" type="StateProv_Type" />
+	<xsd:element name="PostalCode" type="PostalCode_Type" />
+	<xsd:element name="CountryCodeSource" type="OpenEnum_Type" />
+	<xsd:element name="CountryCodeValue" type="OpenEnum_Type" />
+	<xsd:element name="CountryCode" type="CountryCode_Type" />
+	<xsd:element name="CountyDistrict" type="CountyDistrict_Type" />
+	<xsd:element name="EmailAddr" type="EmailAddr_Type" />
+	<xsd:element name="PostAddr" type="PostAddr_Type" />
+
+	<xsd:element name="PersonName" type="PersonName_Type" />
+	<xsd:element name="FullName" type="FullName_Type" />
+	<xsd:element name="GivenName" type="GivenName_Type" />
+	<xsd:element name="MiddleName" type="MiddleName_Type" />
+	<xsd:element name="NamePrefix" type="NamePrefix_Type" />
+	<xsd:element name="NameSuffix" type="NameSuffix_Type" />
+	<xsd:element name="BirthDt" type="Date_Type" />
+	<xsd:element name="Gender" type="OpenEnum_Type" />
+	<xsd:element name="Phone" type="PhoneNumber_Type" />
+
+	<xsd:element name="Status" type="Status_Type" />
+	<xsd:element name="StatusCode" type="Long_Type" />
+	<xsd:element name="Severity" type="Severity_Type" />
+	<xsd:element name="StatusDesc" type="StatusDesc_Type" />
+	<xsd:element name="ServerStatusCode" type="ServerStatusCode_Type" />
+	<xsd:element name="AdditionalStatus" type="AdditionalStatus_Type" />
+	<xsd:element name="MsgRsHdr" type="MsgRsHdr_Type" />
+
+
+</xsd:schema>

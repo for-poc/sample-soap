@@ -1,0 +1,40 @@
+<definitions name="Account" targetNamespace="http://ally.com/wsd/Account/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ally.com/wsd/Account/v1/" xmlns:acct="http://www.ally.com/ifx/Account/" xmlns:ifx="http://www.ifxforum.org/IFX_2X">
+  <documentation>This service contains various capabilities to Party's Account information.</documentation>
+
+  <types>
+    <xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.ally.com/ifx/Account/" schemaLocation="../XMLSchema/Account.xsd"/>
+    </xsd:schema>
+  </types>
+
+  <message name="AccountInqRq">
+    <part name="RequestMessage" element="acct:AccountInqRq"/>
+  </message>
+  <message name="AccountInqRs">
+    <part name="ResponseMessage" element="acct:AccountInqRs"/>
+  </message>
+  
+  <message name="AccountAddRq">
+    <part name="RequestMessage" element="acct:AccountAddRq"/>
+  </message>
+  <message name="AccountAddRs">
+    <part name="ResponseMessage" element="acct:AccountAddRs"/>
+  </message>
+  
+  <portType name="AccountPortType">
+    <operation name="Inq">
+      <documentation>
+        This operation retrieves list of Accounts  for a party.
+      </documentation>
+      <input name="AccountInqRq" message="tns:AccountInqRq"/>
+      <output name="AccountInqRs" message="tns:AccountInqRs"/>
+    </operation>
+    <operation name="Add">
+      <documentation>
+        This operation Adds Accounts for a party.
+      </documentation>
+      <input name="AccountAddRq" message="tns:AccountAddRq"/>
+      <output name="AccountAddRs" message="tns:AccountAddRs"/>
+    </operation>
+  </portType>
+</definitions>

@@ -1,0 +1,34 @@
+<definitions name="Account" targetNamespace="http://ally.com/wsd/Account/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ally.com/wsd/Account/v1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+
+  <import location="Account.wsdl" namespace="http://ally.com/wsd/Account/v1/"/>
+  <import location="../Policies/CommonPolicies.wsdl" namespace="http://ally.com/policies/common/v1/"/>
+
+  <binding name="AccountSoapHttpBinding" type="tns:AccountPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <!--<wsp:PolicyReference URI="#UsernameToken-Plain"/>-->
+    <operation name="Inq">
+      <soap:operation soapAction="http://ally.com/ws/Account/Inq"/>
+      <input name="AccountInqRq">
+        <soap:body use="literal"/>
+      </input>
+      <output name="AccountInqRs">
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Add">
+      <soap:operation soapAction="http://ally.com/ws/Account/Add"/>
+      <input name="AccountAddRq">
+        <soap:body use="literal"/>
+      </input>
+      <output name="AccountAddRs">
+        <soap:body use="literal"/>
+      </output>
+    </operation>  
+  </binding>
+
+  <service name="Account">
+    <port name="AccountSoapHttpsPort" binding="tns:AccountSoapHttpBinding">
+      <soap:address location="https://ally.devesbdns.com:443/services/Account"/>
+    </port>
+  </service>
+</definitions>

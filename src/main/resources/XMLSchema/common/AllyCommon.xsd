@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with Eclipse 4.4 (http://www.altova.com) by Scott Frost (Ally Financial Inc.) -->
+<xsd:schema xmlns:ifx="http://www.ifxforum.org/IFX_2X" xmlns="http://www.ally.com/ifx/Common/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ally.com/ifx/Common/" elementFormDefault="qualified">
+	<xsd:import namespace="http://www.ifxforum.org/IFX_2X" schemaLocation="../ifx/IFX_pruned.xsd"/>
+	<xsd:complexType name="ContextRqHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ContextRqHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="CustDeviceInfo" minOccurs="0"/>
+					<xsd:element ref="ProcessingRules" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustDeviceIdent_Type" abstract="true"/>
+	<xsd:complexType name="CustDeviceInfo_Type" >
+		<xsd:sequence>
+			<xsd:element ref="DeviceLabel" minOccurs="0"/>
+			<xsd:element ref="DevicePrint" minOccurs="0"/>
+			<xsd:element ref="DeviceTokenFSO" minOccurs="0"/>
+			<xsd:element ref="IpAddress" minOccurs="0"/>
+			<xsd:element ref="FlashTokenChecked" minOccurs="0"/>
+			<xsd:element ref="DevicePrintChecked" minOccurs="0"/>
+			<xsd:element ref="BindType" minOccurs="0"/>
+			<xsd:element ref="ifx:PhoneNum" minOccurs="0"/>
+			<xsd:element ref="Hostname" minOccurs="0"/>
+			<xsd:element ref="HttpHeader" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="GeoLocation" minOccurs="0"/>
+			<xsd:element ref="CustDeviceIdent" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="JSCData" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustMobileDeviceIdent_Type">
+		<xsd:complexContent>
+			<xsd:extension base="CustDeviceIdent_Type">
+				<xsd:sequence>
+					<xsd:element ref="SIMId" minOccurs="0"/>
+					<xsd:element ref="OtherId" minOccurs="0"/>
+					<xsd:element ref="HardwareId" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GeoLocation_Type">
+		<xsd:annotation>
+			<xsd:documentation>Geographical location</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="Latitude"/>
+			<xsd:element ref="Longitude"/>
+		</xsd:sequence>
+		<xsd:attribute name="LocationDetectionType"/>
+	</xsd:complexType>
+	<xsd:complexType name="ProcessingRules_Type">
+		<xsd:sequence>
+			<xsd:element ref="RetryDelivery" minOccurs="0"/>
+			<xsd:element ref="ProcessAsync" minOccurs="0"/>
+			<xsd:element ref="IgnoreValidationErrors" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Property_Type">
+		<xsd:annotation>
+			<xsd:documentation>A property name/value pair.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="ifx:C">
+				<xsd:attribute name="Name" type="xsd:normalizedString" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AuthInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="FirstLoginDateTime" minOccurs="0" />
+			<xsd:element ref="LastSuccessfulLoginDateTime" minOccurs="0"/>
+			<xsd:element ref="LastFailedLoginDateTime" minOccurs="0" />
+			<xsd:element ref="MFAAction" minOccurs="0"/>
+			<xsd:element ref="MFAResult" minOccurs="0"/>
+			<xsd:element ref="JSCData" minOccurs="0" />
+			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SecTokenParty_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:SecTokenParty_Type">
+				<xsd:sequence>
+					<xsd:element ref="BiometricMethod" minOccurs="0"/>
+					<xsd:element ref="ifx:IdentVerifyResults" minOccurs="0"/>
+					<xsd:element ref="AuthInfo" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="BindType" type="ifx:Boolean_Type"/>
+	<xsd:element name="ContextRqHdr" type="ContextRqHdr_Type" substitutionGroup="ifx:ContextRqHdr"/>
+	<xsd:element name="CustDeviceIdent" type="CustDeviceIdent_Type"/>
+	<xsd:element name="CustDeviceInfo" type="CustDeviceInfo_Type"/>
+	<xsd:element name="DeviceLabel" type="ifx:C"/>
+	<xsd:element name="DevicePrint" type="ifx:C"/>
+	<xsd:element name="DevicePrintChecked" type="ifx:C"/>
+	<xsd:element name="DeviceTokenFSO" type="ifx:C"/>
+	<xsd:element name="FlashTokenChecked" type="ifx:C"/>
+	<xsd:element name="RetryDelivery" type="ifx:Boolean_Type"/>
+	<xsd:element name="GeoLocation" type="GeoLocation_Type"/>
+	<xsd:element name="Hostname" type="ifx:C"/>
+	<xsd:element name="HardwareId" type="ifx:Identifier_Type"/>
+	<xsd:element name="HttpHeader" type="Property_Type">
+		<xsd:annotation>
+			<xsd:documentation>
+      Valid values: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Referrer, Cookie,bUser-Agent, From,
+      Embedded-Web-Browser-From, UA-CPU, UA-OS, Connection
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IgnoreValidationErrors" type="ifx:Boolean_Type"/>
+	<xsd:element name="IpAddress" type="ifx:C"/>
+	<xsd:element name="JSCData" type="ifx:C"/>
+	<xsd:element name="Latitude" type="ifx:Decimal_Type"/>
+	<xsd:element name="Longitude" type="ifx:Decimal_Type"/>
+	<xsd:element name="OtherId" type="ifx:Identifier_Type"/>
+	<xsd:element name="ProcessAsync" type="ifx:Boolean_Type"/>
+	<xsd:element name="ProcessingRules" type="ProcessingRules_Type"/>
+	<xsd:element name="SIMId" type="ifx:Identifier_Type"/>
+	<xsd:element name="SecTokenParty" type="SecTokenParty_Type" substitutionGroup="ifx:SecTokenParty"/>
+	<xsd:element name="BiometricMethod" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="AuthInfo" type="AuthInfo_Type"/>
+	<xsd:element name="MFAAction" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="MFAResult" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="FirstLoginDateTime" type="ifx:DateTime_Type"/>
+	<xsd:element name="LastSuccessfulLoginDateTime" type="ifx:DateTime_Type"/>
+	<xsd:element name="LastFailedLoginDateTime" type="ifx:DateTime_Type"/>
+</xsd:schema>
