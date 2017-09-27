@@ -19,7 +19,7 @@ import com.test.service.AccountService;
  *  
  *
  */
-@WebService(serviceName = "Account", endpointInterface = "com.ally.bits.api.AccountApi", portName = "AccountSoapHttpsPort", wsdlLocation = "WEB-INF/classes/WSDL/Account-SoapHttp.wsdl", targetNamespace = "http://ally.com/wsd/Account/v1/")
+@WebService(serviceName = "Account", endpointInterface = "com.test.api.AccountApi", portName = "AccountSoapHttpsPort", wsdlLocation = "WEB-INF/classes/WSDL/Account-SoapHttp.wsdl", targetNamespace = "http://ally.com/wsd/Account/v1/")
 @SchemaValidation
 public class AccountApiImpl implements AccountApi {
 

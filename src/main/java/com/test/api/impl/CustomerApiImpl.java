@@ -21,7 +21,7 @@ import com.test.service.CustomerService;
  *  
  *
  */
-@WebService(serviceName = "Customer", endpointInterface = "com.ally.bits.api.CustomerApi", portName = "CustomerPort", wsdlLocation = "WEB-INF/classes/WSDL/Customer.wsdl", targetNamespace = "http://www.ifxopenshift.com/Customer/")
+@WebService(serviceName = "Customer", endpointInterface = "com.test.api.CustomerApi", portName = "CustomerPort", wsdlLocation = "WEB-INF/classes/WSDL/Customer.wsdl", targetNamespace = "http://www.ifxopenshift.com/Customer/")
 @SchemaValidation
 public class CustomerApiImpl implements CustomerApi {
 
