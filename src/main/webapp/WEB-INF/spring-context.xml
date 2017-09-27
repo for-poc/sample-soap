@@ -39,7 +39,7 @@
 
 	<!-- Exposed soap endpoint -->
 	<jaxws:endpoint id="Accounts"
-		implementor="com.ally.bits.api.impl.AccountApiImpl" address="/AcctIS">
+		implementor="com.test.api.impl.AccountApiImpl" address="/AcctIS">
 		<!-- <jaxws:inInterceptors>
 			<ref bean="policyBasedSoapInInterceptor" />
 		</jaxws:inInterceptors>
@@ -50,7 +50,7 @@
 		</jaxws:properties> -->
 	</jaxws:endpoint>
 	<jaxws:endpoint id="Customer"
-		implementor="com.ally.bits.api.impl.CustomerApiImpl" address="/CustIS">
+		implementor="com.test.api.impl.CustomerApiImpl" address="/CustIS">
 		<!-- <jaxws:inInterceptors>
 			<ref bean="policyBasedSoapInInterceptor" />
 		</jaxws:inInterceptors>
@@ -60,8 +60,8 @@
 			<entry key="ws-security.is-bsp-compliant" value="false" />
 		</jaxws:properties> -->
 	</jaxws:endpoint>
-	<bean id="soapPasswordCallBackHandler" class="com.ally.bits.security.SoapPasswordCallBackHandler" />
-	<bean id="policyBasedSoapInInterceptor" class="com.ally.bits.security.PolicyBasedSoapInInterceptor">
+	<bean id="soapPasswordCallBackHandler" class="com.test.security.SoapPasswordCallBackHandler" />
+	<bean id="policyBasedSoapInInterceptor" class="com.test.security.PolicyBasedSoapInInterceptor">
 		<constructor-arg>
 			<map>
 				<entry key="action" value="UsernameToken" />
